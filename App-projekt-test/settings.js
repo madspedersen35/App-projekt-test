@@ -1,28 +1,43 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
-const Settings = ({ navigation }) => {
+const Settings = () => {
+  const navigation = useNavigation();
+
+  // Define your list of fields
+  const fields = [
+    'Account',
+    'Notifications',
+    'Appearance',
+    'Privacy and Security',
+    'Help and Support',
+    'About',
+  ];
+
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
+      {/* List of fields */}
+      {fields.map((field, index) => (
         <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
-          style={styles.backButton}
+          key={index}
+          style={styles.fieldItem}
+          onPress={() => {
+            // You can add specific navigation logic for each field here
+            // For now, it navigates back to the Home screen
+            navigation.navigate('Home');
+          }}
         >
+          <Text style={styles.fieldText}>{field}</Text>
           <Icon
-            name="arrow-left"
+            name="chevron-right"
             type="font-awesome"
             color="#FCCE85"
-            size={30}
+            size={20}
           />
         </TouchableOpacity>
-        <Text style={styles.headerText}>Settings</Text>
-      </View>
-
-      {/* Add your settings content here */}
+      ))}
     </View>
   );
 };
@@ -32,21 +47,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white', // Set the background color as needed
   },
-  header: {
+  fieldItem: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#095167', // Set the header background color to #095167
-    padding: 16,
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E1E1E1',
   },
-  headerText: {
-    fontSize: 24,
-    color: '#FCCE85', // Set the header text color to FCCE85
-  },
-  backButton: {
-    position: 'absolute',
-    top: 16,
-    left: 16,
+  fieldText: {
+    fontSize: 18,
   },
 });
 

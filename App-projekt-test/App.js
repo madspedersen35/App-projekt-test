@@ -59,12 +59,45 @@ const App = () => {
         />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen
-          name="Settings"
-          component={Settings}
-          options={{
-            headerShown: false, // Hide the default header
-          }}
+  name="Settings"
+  component={Settings}
+  options={({ navigation }) => ({
+    headerTitle: 'Settings', // Set the header title here
+    headerStyle: {
+      backgroundColor: '#095167', // Set the header background color
+    },
+    headerTintColor: '#FCCE85', // Set the header text color
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+    headerLeft: () => (
+      <TouchableOpacity
+        style={{ marginLeft: 15 }}
+        onPress={() => navigation.navigate('Home')}
+      >
+        <Icon
+          name="home"
+          type="font-awesome"
+          color="#FCCE85"
+          size={30}
         />
+      </TouchableOpacity>
+    ),
+    headerRight: () => (
+      <TouchableOpacity
+        style={{ marginRight: 15 }}
+        onPress={() => navigation.navigate('Profile')}
+      >
+        <Icon
+          name="user"
+          type="font-awesome"
+          color="#FCCE85"
+          size={30}
+        />
+      </TouchableOpacity>
+    ),
+  })}
+/>
       </Stack.Navigator>
     </NavigationContainer>
   );
