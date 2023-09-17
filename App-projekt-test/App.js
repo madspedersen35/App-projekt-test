@@ -1,20 +1,73 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Homepage from './homepage'; // Import your Homepage component
+import Profile from './profile'; // Import your Profile component
+import Settings from './settings'; // Import your Settings component
+import { Text, TouchableOpacity, Image } from 'react-native'; // Import Text, TouchableOpacity, and Image
+import { Icon } from 'react-native-elements'; // Import Icon from react-native-elements
 
-export default function App() {
+// Import your logo image
+import LogoImage from './views/Logo.png'; // Replace with the actual path to your logo image
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Homepage}
+          options={({ navigation }) => ({
+            headerTitle: () => (
+              <Image
+                source={LogoImage}
+                style={{ width: 55, height: 40 }} // Set the width and height of your logo
+              />
+            ),
+            headerStyle: {
+              backgroundColor: '#095167',
+            },
+            headerRight: () => (
+              <TouchableOpacity
+                style={{ marginRight: 15 }}
+                onPress={() => navigation.navigate('Profile')}
+              >
+                <Icon
+                  name="user"
+                  type="font-awesome"
+                  color="#FCCE85"
+                  size={30}
+                />
+              </TouchableOpacity>
+            ),
+            headerLeft: () => (
+              <TouchableOpacity
+                style={{ marginLeft: 15 }}
+                onPress={() => navigation.navigate('Settings')}
+              >
+                <Icon
+                  name="cog"
+                  type="font-awesome"
+                  color="#FCCE85"
+                  size={30}
+                />
+              </TouchableOpacity>
+            ),
+          })}
+        />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            headerShown: false, // Hide the default header
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
