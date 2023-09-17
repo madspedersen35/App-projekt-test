@@ -6,6 +6,8 @@ import Profile from './profile'; // Import your Profile component
 import Settings from './settings'; // Import your Settings component
 import { Text, TouchableOpacity, Image } from 'react-native'; // Import Text, TouchableOpacity, and Image
 import { Icon } from 'react-native-elements'; // Import Icon from react-native-elements
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; // Import house icon
+import FeatherIcon from 'react-native-vector-icons/Feather'; // Import profile icon
 
 // Import your logo image
 import LogoImage from './views/Logo.png'; // Replace with the actual path to your logo image
@@ -34,9 +36,8 @@ const App = () => {
                 style={{ marginRight: 15 }}
                 onPress={() => navigation.navigate('Profile')}
               >
-                <Icon
+                <FeatherIcon // Profile icon
                   name="user"
-                  type="font-awesome"
                   color="#FCCE85"
                   size={30}
                 />
@@ -57,47 +58,71 @@ const App = () => {
             ),
           })}
         />
-        <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen
-  name="Settings"
-  component={Settings}
-  options={({ navigation }) => ({
-    headerTitle: 'Settings', // Set the header title here
-    headerStyle: {
-      backgroundColor: '#095167', // Set the header background color
-    },
-    headerTintColor: '#FCCE85', // Set the header text color
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-    headerLeft: () => (
-      <TouchableOpacity
-        style={{ marginLeft: 15 }}
-        onPress={() => navigation.navigate('Home')}
-      >
-        <Icon
-          name="home"
-          type="font-awesome"
-          color="#FCCE85"
-          size={30}
+          name="Profile"
+          component={Profile}
+          options={({ navigation }) => ({
+            headerTitle: 'Profile', // Set the header title here
+            headerStyle: {
+              backgroundColor: '#095167', // Set the header background color
+            },
+            headerTintColor: '#FCCE85', // Set the header text color
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerLeft: () => (
+              <TouchableOpacity
+                style={{ marginLeft: 15 }}
+                onPress={() => navigation.navigate('Home')}
+              >
+                <MaterialCommunityIcons // House icon
+                  name="home"
+                  color="#FCCE85"
+                  size={30}
+                />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity
+                style={{ marginRight: 15 }}
+                onPress={() => navigation.navigate('Settings')}
+              >
+                <Icon // Settings icon
+                  name="cog"
+                  type="font-awesome"
+                  color="#FCCE85"
+                  size={30}
+                />
+              </TouchableOpacity>
+            ),
+          })}
         />
-      </TouchableOpacity>
-    ),
-    headerRight: () => (
-      <TouchableOpacity
-        style={{ marginRight: 15 }}
-        onPress={() => navigation.navigate('Profile')}
-      >
-        <Icon
-          name="user"
-          type="font-awesome"
-          color="#FCCE85"
-          size={30}
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={({ navigation }) => ({
+            headerTitle: 'Settings', // Set the header title here
+            headerStyle: {
+              backgroundColor: '#095167', // Set the header background color
+            },
+            headerTintColor: '#FCCE85', // Set the header text color
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerLeft: () => (
+              <TouchableOpacity
+                style={{ marginLeft: 15 }}
+                onPress={() => navigation.navigate('Home')}
+              >
+                <MaterialCommunityIcons // House icon
+                  name="home"
+                  color="#FCCE85"
+                  size={30}
+                />
+              </TouchableOpacity>
+            ),
+          })}
         />
-      </TouchableOpacity>
-    ),
-  })}
-/>
       </Stack.Navigator>
     </NavigationContainer>
   );
