@@ -1,16 +1,16 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Homepage from './homepage'; // Import your Homepage component
-import Profile from './profile'; // Import your Profile component
-import Settings from './settings'; // Import your Settings component
-import { Text, TouchableOpacity, Image } from 'react-native'; // Import Text, TouchableOpacity, and Image
-import { Icon } from 'react-native-elements'; // Import Icon from react-native-elements
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; // Import house icon
-import FeatherIcon from 'react-native-vector-icons/Feather'; // Import profile icon
+import Homepage from './homepage';
+import Profile from './profile';
+import Settings from './settings';
+import Rental from './rental'; // Import your Rental (formerly History) component
+import { Text, TouchableOpacity, Image } from 'react-native';
+import { Icon } from 'react-native-elements';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
-// Import your logo image
-import LogoImage from './views/Logo.png'; // Replace with the actual path to your logo image
+import LogoImage from './views/Logo.png';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +25,7 @@ const App = () => {
             headerTitle: () => (
               <Image
                 source={LogoImage}
-                style={{ width: 55, height: 40 }} // Set the width and height of your logo
+                style={{ width: 55, height: 40 }}
               />
             ),
             headerStyle: {
@@ -36,7 +36,7 @@ const App = () => {
                 style={{ marginRight: 15 }}
                 onPress={() => navigation.navigate('Profile')}
               >
-                <FeatherIcon // Profile icon
+                <FeatherIcon
                   name="user"
                   color="#FCCE85"
                   size={30}
@@ -62,11 +62,11 @@ const App = () => {
           name="Profile"
           component={Profile}
           options={({ navigation }) => ({
-            headerTitle: 'Profile', // Set the header title here
+            headerTitle: 'Profile',
             headerStyle: {
-              backgroundColor: '#095167', // Set the header background color
+              backgroundColor: '#095167',
             },
-            headerTintColor: '#FCCE85', // Set the header text color
+            headerTintColor: '#FCCE85',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -75,7 +75,7 @@ const App = () => {
                 style={{ marginLeft: 15 }}
                 onPress={() => navigation.navigate('Home')}
               >
-                <MaterialCommunityIcons // House icon
+                <MaterialCommunityIcons
                   name="home"
                   color="#FCCE85"
                   size={30}
@@ -87,7 +87,7 @@ const App = () => {
                 style={{ marginRight: 15 }}
                 onPress={() => navigation.navigate('Settings')}
               >
-                <Icon // Settings icon
+                <Icon
                   name="cog"
                   type="font-awesome"
                   color="#FCCE85"
@@ -101,11 +101,11 @@ const App = () => {
           name="Settings"
           component={Settings}
           options={({ navigation }) => ({
-            headerTitle: 'Settings', // Set the header title here
+            headerTitle: 'Settings',
             headerStyle: {
-              backgroundColor: '#095167', // Set the header background color
+              backgroundColor: '#095167',
             },
-            headerTintColor: '#FCCE85', // Set the header text color
+            headerTintColor: '#FCCE85',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -114,13 +114,27 @@ const App = () => {
                 style={{ marginLeft: 15 }}
                 onPress={() => navigation.navigate('Home')}
               >
-                <MaterialCommunityIcons // House icon
+                <MaterialCommunityIcons
                   name="home"
                   color="#FCCE85"
                   size={30}
                 />
               </TouchableOpacity>
             ),
+          })}
+        />
+        <Stack.Screen
+          name="Rental"
+          component={Rental} // Corrected component name to Rental
+          options={({ navigation }) => ({
+            headerTitle: 'Rental History',
+            headerStyle: {
+              backgroundColor: '#095167',
+            },
+            headerTintColor: '#FCCE85',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
           })}
         />
       </Stack.Navigator>

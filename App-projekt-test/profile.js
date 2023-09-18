@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 
-const Profile = () => {
+const Profile = ({ navigation }) => { // Pass the navigation prop here
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -13,7 +13,8 @@ const Profile = () => {
   };
 
   const handleViewRentalHistory = () => {
-    // Implement logic to navigate to the rental history page or perform other actions
+    // Implement logic to navigate to the Rental screen
+    navigation.navigate('Rental'); // Ensure this matches the screen name
   };
 
   return (
