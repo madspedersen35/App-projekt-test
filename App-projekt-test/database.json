@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "email": "user1@example.com",
+      "type": "Padelboard",
+      "date": "2023-09-15",
+      "duration": "1 hour",
+      "price": 200
+    },
+    {
+      "id": 2,
+      "email": "user2@example.com",
+      "type": "Padelboard",
+      "date": "2023-09-20",
+      "duration": "45 minutes",
+      "price": 150
+    },
+    {
+      "id": 3,
+      "email": "user1@example.com",
+      "type": "Waterbike",
+      "date": "2023-09-25",
+      "duration": "2 hours",
+      "price": 350
+    },
+    {
+      "id": 4,
+      "email": "user3@example.com",
+      "type": "Padelboard",
+      "date": "2023-09-30",
+      "duration": "1.5 hours",
+      "price": 125
+    },
+    {
+      "id": 5,
+      "email": "user4@example.com",
+      "type": "Padelboard",
+      "date": "2023-10-05",
+      "duration": "1.25 hours",
+      "price": 100
+    },
+    {
+      "id": 6,
+      "email": "user2@example.com",
+      "type": "Waterbike",
+      "date": "2023-10-10",
+      "duration": "1 hour",
+      "price": 75
+    }
+  ]
+  

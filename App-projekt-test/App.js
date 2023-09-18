@@ -4,11 +4,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Homepage from './homepage';
 import Profile from './profile';
 import Settings from './settings';
-import Rental from './rental'; // Import your Rental (formerly History) component
 import { Text, TouchableOpacity, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import Rental from './rental'; // Import your Rental component
 
 import LogoImage from './views/Logo.png';
 
@@ -125,7 +125,7 @@ const App = () => {
         />
         <Stack.Screen
           name="Rental"
-          component={Rental} // Corrected component name to Rental
+          component={Rental} // Use your Rental component here
           options={({ navigation }) => ({
             headerTitle: 'Rental History',
             headerStyle: {
@@ -135,6 +135,31 @@ const App = () => {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
+            headerLeft: () => (
+              <TouchableOpacity
+                style={{ marginLeft: 15 }}
+                onPress={() => navigation.goBack()} // Use navigation.goBack() to go back
+              >
+                <Icon
+                  name="arrow-left"
+                  type="font-awesome"
+                  color="#FCCE85"
+                  size={30}
+                />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity
+                style={{ marginRight: 15 }}
+                onPress={() => navigation.navigate('Home')}
+              >
+                <MaterialCommunityIcons
+                  name="home"
+                  color="#FCCE85"
+                  size={30}
+                />
+              </TouchableOpacity>
+            ),
           })}
         />
       </Stack.Navigator>
