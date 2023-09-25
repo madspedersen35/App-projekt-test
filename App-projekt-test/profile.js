@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { Icon } from 'react-native-elements';
+import React, { useState } from 'react'; // Importerer React
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native'; // Importerer komponenter
+import { Icon } from 'react-native-elements'; // Importerer ikonerne
 
-const Profile = ({ navigation }) => { // Pass the navigation prop here
+const Profile = ({ navigation }) => { // Opretter komponenten
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [instagramAccount, setInstagramAccount] = useState('');
 
   const handleEditProfile = () => {
-    // Implement logic for editing the profile here
+    // Implementer logik til at opdatere brugerprofilen 
   };
 
   const handleViewRentalHistory = () => {
-    // Implement logic to navigate to the Rental screen
-    navigation.navigate('Rental'); // Ensure this matches the screen name
+    
+    navigation.navigate('Rental'); // Navigerer til Rental skærmen
   };
-
+// Returnerer komponenten
   return (
     <View style={styles.container}>
       {/* Profile Picture */}
       <TouchableOpacity style={styles.profilePictureContainer}>
         <Image
-          source={require('./views/profil.png')} // Provide a default profile image
+          source={require('./views/profil.png')} //profilbillede
           style={styles.profilePicture}
         />
         <Icon
@@ -84,7 +84,7 @@ const Profile = ({ navigation }) => { // Pass the navigation prop here
     </View>
   );
 };
-
+// Styling af komponenter
 const styles = StyleSheet.create({
   container: {
     flex: 1,

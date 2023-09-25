@@ -1,27 +1,29 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';// Importerer React
+import { NavigationContainer } from '@react-navigation/native';// Importere navigationen
+import { createNativeStackNavigator } from '@react-navigation/native-stack';// Importerer navigationen
 import Homepage from './homepage';
 import Profile from './profile';
 import Settings from './settings';
-import { Text, TouchableOpacity, Image } from 'react-native';
-import { Icon } from 'react-native-elements';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import Rental from './rental'; // Import your Rental component
+import { Text, TouchableOpacity, Image } from 'react-native'; // Importerer komponenter
+import { Icon } from 'react-native-elements'; // Importerer ikonerne
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';// Importerer ikonerne
+import FeatherIcon from 'react-native-vector-icons/Feather'; // Importerer ikonerne
+import Rental from './rental'; // Importerer Rental skærmen
 
-import LogoImage from './views/Logo.png';
+import LogoImage from './views/Logo.png'; //Importerer logoet
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
+    // Opretter navigationen og stakken af skærme
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
           component={Homepage}
           options={({ navigation }) => ({
+            // Konfiguration af headeren for startsiden
             headerTitle: () => (
               <Image
                 source={LogoImage}
@@ -62,6 +64,7 @@ const App = () => {
           name="Profile"
           component={Profile}
           options={({ navigation }) => ({
+            // Konfiguration af headeren for profilskærmen
             headerTitle: 'Profile',
             headerStyle: {
               backgroundColor: '#095167',
@@ -101,6 +104,7 @@ const App = () => {
           name="Settings"
           component={Settings}
           options={({ navigation }) => ({
+            // Konfiguration af headeren for indstillinger
             headerTitle: 'Settings',
             headerStyle: {
               backgroundColor: '#095167',
@@ -125,8 +129,9 @@ const App = () => {
         />
         <Stack.Screen
           name="Rental"
-          component={Rental} // Use your Rental component here
+          component={Rental} 
           options={({ navigation }) => ({
+            // Konfiguration af headeren for udlejningshistorikskærmen
             headerTitle: 'Rental History',
             headerStyle: {
               backgroundColor: '#095167',
@@ -138,7 +143,7 @@ const App = () => {
             headerLeft: () => (
               <TouchableOpacity
                 style={{ marginLeft: 15 }}
-                onPress={() => navigation.goBack()} // Use navigation.goBack() to go back
+                onPress={() => navigation.goBack()} // Brug navigation.goBack() til at gå tilbage
               >
                 <Icon
                   name="arrow-left"

@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { View, Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react'; // Importerer React
+import { View, Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet } from 'react-native'; // Importerer komponenter
 
-// Import your background image
-import BackgroundImage from './views/rental.png'; // Replace with the actual path to your background image
 
-// Import your JSON data
-import data from './database.json'; // Replace with the correct path to your JSON file
+import BackgroundImage from './views/rental.png'; // Importerer baggrundsbilledet
+
+
+import data from './database.json'; // Importerer dataen
 
 const Rental = ({ navigation }) => {
   const [email, setEmail] = useState('');
-  const [foundData, setFoundData] = useState(null); // State to store the found data
+  const [foundData, setFoundData] = useState(null); 
 
-  const handleEmailSearch = () => {
-    // Process the data here and display it in your component
-    // For example, you can filter data based on the entered email
+  const handleEmailSearch = () => { // Funktionen til at søge efter emailen
+
+    
     const filteredData = data.filter((item) => item.email === email);
 
     if (filteredData.length > 0) {
-      // Data found, update the state
+      // data fundet, opdater state
       setFoundData(filteredData);
     } else {
-      // Data not found, reset the state
+      // Data ik fundet, nulstil state
       setFoundData(null);
     }
   };
 
-  return (
+  return ( // Returnerer komponenten
     <ImageBackground source={BackgroundImage} style={styles.backgroundImage}>
       <View style={styles.container}>
         {/* Your Trips */}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover', // You can customize the resizeMode as per your requirements
+    resizeMode: 'cover',
   },
   text: {
     color: '#FCCE85',
@@ -94,12 +94,12 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   emailInput: {
-    backgroundColor: 'rgba(255, 255, 255, 0.3)', // Transparent white background
+    backgroundColor: 'rgba(255, 255, 255, 0.3)', //transparent baggrund
     borderRadius: 5,
     height: 40,
     paddingHorizontal: 10,
-    color: '#095167', // Text color changed to #095167
-    width: '100%', // Make the input as wide as the container
+    color: '#095167',  
+    width: '100%', 
   },
   emailButton: {
     backgroundColor: '#FCCE85',
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
-    width: '80%', // Adjust as needed
+    width: '80%', 
   },
   emailButtonText: {
     color: '#095167',
@@ -118,16 +118,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   foundDataItem: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Less transparent background
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
     borderRadius: 5,
     padding: 10,
     marginVertical: 5,
   },
   foundDataText: {
-    color: '#095167', // Text color changed to #FCCE85
-    fontSize: 25, // You can adjust the font size as needed
+    color: '#095167', 
+    fontSize: 25, 
     fontWeight: 'bold',
   },
 });
 
-export default Rental;
+export default Rental; // Eksporterer komponenten

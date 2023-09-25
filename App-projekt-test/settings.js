@@ -3,11 +3,10 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
-const Settings = () => {
-  const navigation = useNavigation();
+const Settings = () => { 
+  const navigation = useNavigation(); // Opretter navigationen
 
-  // Define your list of fields
-  const fields = [
+  const fields = [ // Opretter en liste af felter
     'Account',
     'Notifications',
     'Appearance',
@@ -24,13 +23,12 @@ const Settings = () => {
           key={index}
           style={styles.fieldItem}
           onPress={() => {
-            // You can add specific navigation logic for each field here
-            // For now, it navigates back to the Home screen
+            
             navigation.navigate('Home');
           }}
         >
           <Text style={styles.fieldText}>{field}</Text>
-          <Icon
+          <Icon // Opretter en pil til højre for felterne
             name="chevron-right"
             type="font-awesome"
             color="#FCCE85"
@@ -42,10 +40,10 @@ const Settings = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ // Styling af komponenter
   container: {
     flex: 1,
-    backgroundColor: 'white', // Set the background color as needed
+    backgroundColor: 'white', 
   },
   fieldItem: {
     flexDirection: 'row',
